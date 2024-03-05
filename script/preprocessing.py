@@ -18,8 +18,8 @@ def load_data(fname="1kg_chr16_pca_recode.raw"):
     return genotypes
 
 
-def make_plot_ready(data, pcs, n_components = 10):
-    pca_df = pd.DataFrame(pcs.T, columns=[f"PC{i+1}" for i in range(n_components)])
+def make_plot_ready(data, pcs, n_components = 10, prefix="PC"):
+    pca_df = pd.DataFrame(pcs.T, columns=[f"{prefix}{i+1}" for i in range(n_components)])
     data_subset = data[['FID', 'IID']]
     pca_df = pd.concat([data_subset, pca_df], axis=1)
 

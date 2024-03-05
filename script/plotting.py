@@ -1,4 +1,5 @@
 from matplotlib.lines import Line2D
+from matplotlib import pyplot as plt
 import pandas as pd
 
 # def PlotPCA(evecfile, pcx, pcy, colorby="superpop", highlight_samples=[None], ax=None, 
@@ -6,7 +7,7 @@ import pandas as pd
 def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax=None, use_legend=True) :
     """
     Make a PCA scatter plot from the plink .eigenvec file
-    
+
     evecfile : str
         Path to the .eigenvec file output by plink --pca
     pcx : int
@@ -31,7 +32,7 @@ def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax
         "AMR": "blue",
         "EAS": "green"
     }
-    
+
     pop_to_color = {
         "CHB": "olivedrab",
         "JPT": "yellowgreen",
@@ -63,7 +64,7 @@ def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax
     }
 
     # Load metadata
-    IGSRFILE="~/public/1000Genomes/igsr_samples.tsv"
+    IGSRFILE="igsr_samples.tsv"
     samp = pd.read_csv(IGSRFILE, sep="\t")
     samp = samp[["Sample name", "Superpopulation code", "Population code"]]
     samp.rename(columns={"Sample name": "IID"}, inplace=True)
@@ -91,24 +92,24 @@ def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax
             legend_elements = [Line2D([0], [0], marker='o', color='w', label=pop,
                           markerfacecolor=pop_to_color[pop], markersize=5) \
                   for pop in pop_to_color.keys()]
-        
+
     # Plot pcx vs. pcy
     alpha = 1
     if len(highlight_samples)>0: alpha = 0.2
     if ax is None:
         fig = plt.figure()
         ax = fig.add_subplot(111)
-    ax.scatter(data["PC"+str(pcx)], data["PC"+str(pcy)], color=data["color"], s=5, alpha=alpha)
-    
+    ax.scatter(data[str(pcx)], data[str(pcy)], color=data["color"], s=5, alpha=alpha)
+
     for sample in highlight_samples:
-        ax.scatter(data[data["IID"]==sample]["PC"+str(pcx)], \
-                  data[data["IID"]==sample]["PC"+str(pcy)], s=50, color="black", edgecolor="darkgray")
-    
+        ax.scatter(data[data["IID"]==sample][str(pcx)], \
+                  data[data["IID"]==sample][str(pcy)], s=50, color="black", edgecolor="darkgray")
+
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
-    if use_legend: ax.legend(handles=legend_elements, loc="lower right", 
+    if use_legend: ax.legend(handles=legend_elements, loc="lower right",
                              bbox_to_anchor=(1.3, 0))
-    ax.set_xlabel("PC"+str(pcx))
-    ax.set_ylabel("PC"+str(pcy))
+    ax.set_xlabel(str(pcx))
+    ax.set_ylabel(str(pcy))
