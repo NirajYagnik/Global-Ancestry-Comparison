@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 def load_data(fname="1kg_chr16_pca_recode.raw"):
-    data = pd.read_csv(fname, delim_whitespace=True)
+    data = pd.read_csv("src/"+fname, delim_whitespace=True)
     data.dropna(axis=1, how='any', inplace=True)
 
     snpcols = data.columns[6:]
@@ -15,7 +15,7 @@ def load_data(fname="1kg_chr16_pca_recode.raw"):
     scaler = StandardScaler()
     genotypes = scaler.fit_transform(genotypes)
 
-    return genotypes
+    return data, genotypes
 
 
 def make_plot_ready(data, pcs, n_components = 10, prefix="PC"):

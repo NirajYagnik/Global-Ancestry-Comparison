@@ -4,7 +4,7 @@ import pandas as pd
 
 # def PlotPCA(evecfile, pcx, pcy, colorby="superpop", highlight_samples=[None], ax=None, 
 #            use_legend=True):
-def PlotPCA(data, pcx=1, pcy=2, prefix="PC", colorby="superpop", highlight_samples=[None], ax=None, use_legend=True) :
+def PlotClusters(data, pcx=1, pcy=2, prefix="PC", colorby="superpop", highlight_samples=[None], ax=None, use_legend=True) :
     """
     Make a PCA scatter plot from the plink .eigenvec file
 
@@ -64,7 +64,7 @@ def PlotPCA(data, pcx=1, pcy=2, prefix="PC", colorby="superpop", highlight_sampl
     }
 
     # Load metadata
-    IGSRFILE="igsr_samples.tsv"
+    IGSRFILE="src/igsr_samples.tsv"
     samp = pd.read_csv(IGSRFILE, sep="\t")
     samp = samp[["Sample name", "Superpopulation code", "Population code"]]
     samp.rename(columns={"Sample name": "IID"}, inplace=True)
