@@ -4,7 +4,7 @@ import pandas as pd
 
 # def PlotPCA(evecfile, pcx, pcy, colorby="superpop", highlight_samples=[None], ax=None, 
 #            use_legend=True):
-def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax=None, use_legend=True) :
+def PlotPCA(data, pcx=1, pcy=2, prefix="PC", colorby="superpop", highlight_samples=[None], ax=None, use_legend=True) :
     """
     Make a PCA scatter plot from the plink .eigenvec file
 
@@ -99,11 +99,11 @@ def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax
     if ax is None:
         fig = plt.figure()
         ax = fig.add_subplot(111)
-    ax.scatter(data[str(pcx)], data[str(pcy)], color=data["color"], s=5, alpha=alpha)
+    ax.scatter(data[prefix + str(pcx)], data[prefix + str(pcy)], color=data["color"], s=5, alpha=alpha)
 
     for sample in highlight_samples:
-        ax.scatter(data[data["IID"]==sample][str(pcx)], \
-                  data[data["IID"]==sample][str(pcy)], s=50, color="black", edgecolor="darkgray")
+        ax.scatter(data[data["IID"]==sample][prefix + str(pcx)], \
+                  data[data["IID"]==sample][prefix + str(pcy)], s=50, color="black", edgecolor="darkgray")
 
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
@@ -111,5 +111,5 @@ def PlotPCA(data, pcx=1, pcy=2, colorby="superpop", highlight_samples=[None], ax
     ax.xaxis.set_ticks_position('bottom')
     if use_legend: ax.legend(handles=legend_elements, loc="lower right",
                              bbox_to_anchor=(1.3, 0))
-    ax.set_xlabel(str(pcx))
-    ax.set_ylabel(str(pcy))
+    ax.set_xlabel(prefix + str(pcx))
+    ax.set_ylabel(prefix + str(pcy))
