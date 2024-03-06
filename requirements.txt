@@ -4,3 +4,5 @@ umap-learn>=0.5.0
 scikit-learn>=0.24.0
 tensorflow>=2.4.0
 Keras>=2.4.3
+notebook>=6.4.0
+
