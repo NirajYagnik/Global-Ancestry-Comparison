@@ -38,6 +38,9 @@ Steps to run on your local machine:
     --out 1kg_chr16_pca_recode
     ```
 
+## Analysis
+You can find our visualization and analysis for all the techniques we implemented in the `main.ipynb`.
+
 
 ## Future Work
 For our future directions, we intend to find ways to improve our performance for the auto-encoder model. We also wish to look into other quantitative metrics of evaluations.
