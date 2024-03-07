@@ -1,6 +1,7 @@
 # Global-Ancestry-Comparison
 The proposed work aims to compare the effectiveness of various dimensionality reduction techniques, including Principal Component Analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE), Autoencoders, Multidimensional Scaling (MDS), Isometric Mapping (Isomap) and Uniform Manifold Approximation and Projection (UMAP) in the context of global ancestry inference from genomic data. We plan to implement these techniques in Python and evaluate their performance based on criteria such as computational efficiency, ability to capture genetic variation, and the clarity of the resulting visualizations in distinguishing between different ancestral populations. Experimenting with other dimensionality reduction methods would allow us to uncover diverse aspects of genetic data, enriching our analysis of global ancestry.
 
+Group Number : 20
 
 - Niraj Yagnik, Vivek Sharma, Jay Jhaveri
 
