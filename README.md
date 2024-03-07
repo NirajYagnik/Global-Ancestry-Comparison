@@ -20,14 +20,15 @@ We have compiled all the code at one place in main.ipynb file. It contains the p
 
 Steps to run on your local machine:
 
-1. (A new virtual environment recommended) `pip install -r requirements.txt`
-2. Download all preprocessed raw zip files from this drive [link](https://drive.google.com/drive/folders/1x_wgb0GMv1P-MgQGI-pufjn-XgcSToi8?usp=sharing)
+1. clone the repo `git clone https://github.com/NirajYagnik/Global-Ancestry-Comparison.git`
+2. (A new virtual environment recommended) `pip install -r requirements.txt`
+3. Download all preprocessed raw zip files from this drive [link](https://drive.google.com/drive/folders/1x_wgb0GMv1P-MgQGI-pufjn-XgcSToi8?usp=sharing)
     - Extract each of them in the src folder.
-3. Open main.ipynb
-4. You can now press run all in the jupyter notebook (approx run time 6-7 mins).
+4. Open main.ipynb
+5. You can now press run all in the jupyter notebook (approx run time 6-7 mins).
     - At start, it will ask you to input a chromosome number of your choice from the preprocessed files.
-5. At the end you can visualize and compare each of the dimensionality reduction algorithms with each other.
-6. OPTIONAL: You may use the following plink command to create raw files for other chromosomes too.
+6. At the end you can visualize and compare each of the dimensionality reduction algorithms with each other.
+7. OPTIONAL: You may use the following plink command to create raw files for other chromosomes too.
     ```
      plink \
     --vcf ~/public/pca-exercise/1000G_mgymrek_merged.vcf.gz \
@@ -36,3 +37,7 @@ Steps to run on your local machine:
     --chr 16 \
     --out 1kg_chr16_pca_recode
     ```
+
+
+## Future Work
+For our future directions, we intend to find ways to improve our performance for the auto-encoder model. We also wish to look into other quantitative metrics of evaluations.
